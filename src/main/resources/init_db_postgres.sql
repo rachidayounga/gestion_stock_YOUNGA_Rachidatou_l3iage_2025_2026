@@ -53,8 +53,16 @@ CREATE TABLE IF NOT EXISTS mouvements(
     produit_id INTEGER,
     FOREIGN KEY (produit_id) REFERENCES produits(id)
     );
-
-
+---table usser
+CREATE TABLE IF NOT EXISTS utilisateurs(
+    id  SERIAL PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    nom VARCHAR(100) NOT NULL,
+    mot_de_passe_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL CHECK (role IN ('ADMIN', 'GESTIONNAIRE')),
+    date_creation DATE DEFAULT CURRENT_DATE,
+    actif BOOLEAN NOT NULL DEFAULT TRUE
+);
 INSERT INTO categories(nom, description) VALUES
                                              ('Informatique', 'Materiel et accessoires informatiques'),
                                              ('Mobilier', 'Bureau, chaises et rangements'),

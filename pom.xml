@@ -55,6 +55,12 @@
             <version>42.7.11</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- BCrypt : hachage sécurisé des mots de passe -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
 
     </dependencies>
 
