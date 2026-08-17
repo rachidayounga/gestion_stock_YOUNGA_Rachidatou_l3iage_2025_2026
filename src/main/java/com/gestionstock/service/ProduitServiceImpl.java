@@ -82,10 +82,15 @@ public class ProduitServiceImpl implements ProduitService {
     @Override
     public void deleteProduit(int id) {
         EntityManager em = JPAUtil.getEntityManager();
+        Produit produit = em.find(Produit.class, id);
         try {
             em.getTransaction().begin();
-            Optional<Produit> produitOptional = findById(id);
-            if(produitOptional.isPresent()) em.remove(produitOptional);
+            //Optional<Produit> produitOptional = findById(id);
+            //correction
+            // if(produitOptional.isPresent()) em.remove(produitOptional);
+            if (produit != null) {
+                 em.remove(produit);
+                }
             em.getTransaction().commit();
         } catch (Exception e){
             em.getTransaction().rollback();

@@ -41,7 +41,9 @@ public class Produit {
     @Column(nullable = false)
     private double prix;
 
-    private double prixPromo;
+   @Column
+
+   private double prixPromo;
 
     @ManyToOne
     @JoinColumn(name = "categorie_id")
@@ -117,6 +119,14 @@ public class Produit {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public double getPrixPromo() {
+        return prixPromo;
+    }
+
+    public void setPrixPromo(double prixPromo) {
+        this.prixPromo = prixPromo;
     }
 
     @Override
