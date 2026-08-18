@@ -7,6 +7,7 @@ module com.gestionstock {
     requires jbcrypt;
 
 
+
     opens com.gestionstock to javafx.fxml, javafx.graphics;
     opens com.gestionstock.controller to javafx.fxml;
     opens com.gestionstock.model to javafx.fxml, javafx.base, org.hibernate.orm.core;
