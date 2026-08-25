@@ -61,12 +61,16 @@ public class Categorie {
         this.description = description;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Categorie{" +
+//                "id=" + id +
+//                ", nom='" + nom + '\'' +
+//                ", description='" + description + '\'' +
+//                '}';
+//    }
     @Override
     public String toString() {
-        return "Categorie{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return nom;
     }
 }

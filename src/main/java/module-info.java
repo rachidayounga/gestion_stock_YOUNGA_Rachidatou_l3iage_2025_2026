@@ -5,7 +5,8 @@ module com.gestionstock {
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
     requires jbcrypt;
-
+    requires javafx.graphics;
+    requires javafx.base;
 
 
     opens com.gestionstock to javafx.fxml, javafx.graphics;

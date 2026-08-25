@@ -15,7 +15,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -126,4 +131,37 @@ public class ProduitController {
             chargerDonnees();
         }
     }
-}
+    @FXML
+    private void ajouterProduit() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gestionstock/AddProduit.fxml"));
+            Parent racine = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter un produit");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(tableProduits.getScene().getWindow());
+            stage.setScene(new Scene(racine));
+
+            stage.showAndWait();
+
+            // Le dialog est fermé (Enregistrer ou Annuler) : on rafraîchit le tableau
+            chargerDonnees();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alerte = new Alert(Alert.AlertType.ERROR);
+            alerte.setTitle("Erreur");
+            alerte.setHeaderText(null);
+            alerte.setContentText("Impossible d'ouvrir le formulaire d'ajout.");
+            alerte.showAndWait();
+        }
+    }
+        // test AVANT réaffectation, pour savoir dans quel mode on était en entrant
+
+            // mode ajout : nouvel objet
+
+        // rafraîchir + vider
+
+    }
+

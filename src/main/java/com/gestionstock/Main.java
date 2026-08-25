@@ -1,6 +1,5 @@
 package com.gestionstock;
 
-import com.gestionstock.util.DatabaseConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ public class Main extends Application {
         //DatabaseConfig.testerConnection();
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/gestionstock/LoginView.fxml")
+                getClass().getResource("/com/gestionstock/Login.fxml")
         );
 
         Scene scene = new Scene(loader.load());

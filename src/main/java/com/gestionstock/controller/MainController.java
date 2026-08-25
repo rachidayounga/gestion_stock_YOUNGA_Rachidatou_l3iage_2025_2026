@@ -51,12 +51,12 @@ public class MainController {
 
     @FXML
     private void afficherCategories() {
-        chargerVue("/com/gestionstock/categories.fxml");
+        chargerVue("/com/gestionstock/Categorie.fxml");
     }
 
     @FXML
     private void afficherFournisseurs() {
-        chargerVue("/com/gestionstock/fournisseurs.fxml");
+        chargerVue("/com/gestionstock/fournisseur.fxml");
     }
 
     private void chargerVue(String cheminFxml) {
@@ -76,7 +76,7 @@ public class MainController {
         SessionUtilisateur.deconnecter();
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/gestionstock/LoginView.fxml")
+                    getClass().getResource("/com/gestionstock/Login.fxml")
             );
             Scene scene = new Scene(loader.load());
             scene.getStylesheets().add(
@@ -90,6 +90,10 @@ public class MainController {
             e.printStackTrace();
         }
 
+    }
+    @FXML
+    private void afficherMouvements() {
+        chargerVue("/com/gestionstock/Mouvement.fxml");
     }
     @FXML
     private void gererComptes() {
