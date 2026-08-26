@@ -95,7 +95,7 @@ public class MouvementController {
     @FXML
     private void ouvrirDialogAjout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gestionstock/AddMouvementDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gestionstock/AddMouvement.fxml"));
             Parent racine = loader.load();
 
             Stage stage = new Stage();

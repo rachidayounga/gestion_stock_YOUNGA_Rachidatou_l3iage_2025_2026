@@ -78,7 +78,7 @@ public class MouvementServiceImpl implements MouvementService {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            throw new RuntimeException("erreur lors de l'enregistrement du mouvement");
+            throw new RuntimeException("erreur lors de l'enregistrement du mouvement:la quantite demande est superieur au stock");
         } finally {
             em.close();
         }

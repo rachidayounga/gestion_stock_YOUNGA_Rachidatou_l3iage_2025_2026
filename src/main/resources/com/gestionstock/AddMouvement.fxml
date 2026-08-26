@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="380.0" spacing="15.0"
+      xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gestionstock.controller.AddMouvementController"
+>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="Nouveau mouvement" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="10.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints minWidth="110.0" prefWidth="110.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" />
+            </columnConstraints>
+
+            <Label text="Produit *" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <ComboBox fx:id="comboProduit" maxWidth="Infinity" promptText="Choisir un produit" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label text="Type *" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <HBox spacing="15.0" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                <children>
+                    <RadioButton fx:id="radioEntree" text="Entrée" selected="true">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="groupeTypeMouvement" />
+                        </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="radioSortie" text="Sortie" toggleGroup="$groupeTypeMouvement" />
+                </children>
+            </HBox>
+
+            <Label text="Quantité *" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="champQuantite" promptText="Ex. 10" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <Label fx:id="labelMotif" text="Motif" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+            <TextField fx:id="champMotif" promptText="Obligatoire pour une sortie" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+        </GridPane>
+
+        <Label fx:id="labelApercuStock" text="Stock actuel : —" style="-fx-font-style: italic; -fx-text-fill: #555555;" />
+
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button fx:id="boutonAnnuler" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+                <Button fx:id="boutonEnregistrer" mnemonicParsing="false" onAction="#enregistrer" styleClass="btn-primaire" text="Enregistrer" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
