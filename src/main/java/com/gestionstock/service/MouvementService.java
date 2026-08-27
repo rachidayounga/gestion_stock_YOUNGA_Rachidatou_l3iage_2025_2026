@@ -10,4 +10,6 @@ public interface MouvementService {
     Optional<Mouvement> findById(int id);
     List<Mouvement> findByProduit(int produitId);
     void addMouvement(Produit produit, TypeMouvement type, int quantite, String motif);
+    long countEntreesDuJour();
+    long countSortiesDuJour();
 }

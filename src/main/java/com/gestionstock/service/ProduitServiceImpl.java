@@ -56,7 +56,7 @@ public class ProduitServiceImpl implements ProduitService {
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback(); // pour enlever ce qu'on avait insérer sur la base données
             throw new RuntimeException("Erreur lors de la sauvegarde du produit");
         } finally {
@@ -71,7 +71,7 @@ public class ProduitServiceImpl implements ProduitService {
             em.getTransaction().begin();
             em.merge(p);
             em.getTransaction().commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback(); // pour enlever ce qu'on avait insérer sur la base données
             throw new RuntimeException("Erreur lors de la modification du produit");
         } finally {
@@ -89,10 +89,10 @@ public class ProduitServiceImpl implements ProduitService {
             //correction
             // if(produitOptional.isPresent()) em.remove(produitOptional);
             if (produit != null) {
-                 em.remove(produit);
-                }
+                em.remove(produit);
+            }
             em.getTransaction().commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException("Erreur lors de la suppression du produit");
         } finally {
@@ -100,14 +100,60 @@ public class ProduitServiceImpl implements ProduitService {
         }
     }
 
+    @Override
     public List<Produit> findByStockBas() {
         try (EntityManager em = JPAUtil.getEntityManager()) {
             return em.createQuery(
                     "SELECT p FROM Produit p " +
-                            "WHERE p.quantiteStock < p.quantiteMin " +
+                            "WHERE p.quantiteStock <= p.quantiteMin " +
                             "ORDER BY p.quantiteStock",
                     Produit.class
             ).getResultList();
         }
     }
+
+    @Override
+    public long countTotalProduits() {
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            return em.createQuery(
+                    "SELECT COUNT(*) FROM Produit p ",
+                    Long.class
+            ).getSingleResult();
+        }
+    }
+
+    //    @Override
+//    public double calculerValeurTotaleStock(){
+//        try (EntityManager em = JPAUtil.getEntityManager()) {
+//            return em.createQuery(
+//                  " SELECT SUM(p.quantiteStock * p.prix) FROM Produit p",
+//                    Double.class
+//            ).getSingleResult();
+//        }
+//    }
+    //garder le resultat dans un variable pour eviter exception quand c'est null
+    public double calculerValeurTotaleStock() {
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            Double resultat = em.createQuery(
+                    "SELECT SUM(p.quantiteStock * p.prix) FROM Produit p",
+                    Double.class
+            ).getSingleResult();
+            if (resultat == null) {
+                return 0.0;
+            }
+            return resultat;
+
+        }
+    }
+    @Override
+    public long countStockBas(){
+        try (EntityManager em = JPAUtil.getEntityManager()) {
+            return em.createQuery(
+                    "SELECT COUNT(*) FROM Produit p " +
+                            "WHERE p.quantiteStock <= p.quantiteMin",
+                    Long.class
+            ).getSingleResult();
+        }
+    }
 }
+
