@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gestionstock.controller.DashboardController">
+    <children>
+        <!-- En-tête -->
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0" spacing="10.0">
+            <children>
+                <Label text="Gestion Stock IAGE" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="labelUtilisateurConnecte" text="Utilisateur" />
+                <Button fx:id="boutonDeconnexion" mnemonicParsing="false" onAction="#seDeconnecter" text="Déconnexion" />
+            </children>
+        </HBox>
+
+        <!-- Bloc statistiques : 4 cartes -->
+        <HBox spacing="15.0" alignment="CENTER">
+            <children>
+
+                <VBox alignment="CENTER" prefWidth="130.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelTotalProduits" text="0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <Label text="Produits" />
+                    </children>
+                </VBox>
+
+                <VBox alignment="CENTER" prefWidth="130.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelStockBas" text="0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <Label text="Stock bas" />
+                    </children>
+                </VBox>
+
+                <VBox alignment="CENTER" prefWidth="130.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelValeurStock" text="0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <Label text="Valeur stock" />
+                    </children>
+                </VBox>
+
+
+                <VBox alignment="CENTER" prefWidth="130.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelMouvementsJour" text="0 / 0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <Label text="Entrées / Sorties" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Bloc alerte : produits en stock bas -->
+        <Label text="Produits en stock bas" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <TableView fx:id="tableStockBas" prefHeight="200.0" prefWidth="560.0">
+            <columns>
+                <TableColumn fx:id="colonneNomProduit" prefWidth="260.0" text="Nom" />
+                <TableColumn fx:id="colonneQuantiteStock" prefWidth="150.0" text="Quantité stock" />
+                <TableColumn fx:id="colonneQuantiteMin" prefWidth="150.0" text="Quantité min" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

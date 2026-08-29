@@ -40,7 +40,7 @@ public class MainController {
     @FXML
     private void afficherDashboard() {
         contenuPrincipale.getChildren().clear();
-        contenuPrincipale.getChildren().add(new Label("Dashboard"));
+        chargerVue("/com/gestionstock/Dashboard.fxml");
 
     }
 
@@ -72,7 +72,7 @@ public class MainController {
         }
     }
     @FXML
-    private void seDeconnecter() {
+    public void seDeconnecter() {
         SessionUtilisateur.deconnecter();
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -99,5 +99,6 @@ public class MainController {
     private void gererComptes() {
         System.out.println("");
     }
+
 
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -15,7 +18,19 @@
     <children>
         <HBox prefHeight="40.0" prefWidth="200.0" spacing="10.0">
             <children>
-                <TextField fx:id="champRecherche" onKeyReleased="#rechercherMouvements" prefWidth="300.0" promptText="Rechercher (produit)" />
+                <TextField fx:id="champRecherche" onKeyReleased="#appliquerFiltres" prefWidth="220.0" promptText="Rechercher (produit)" />
+
+                <RadioButton fx:id="radioToutes" text="Toutes" selected="true" onAction="#appliquerFiltres">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="groupeTypeFiltre" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="radioEntrees" text="Entrées" toggleGroup="$groupeTypeFiltre" onAction="#appliquerFiltres" />
+                <RadioButton fx:id="radioSorties" text="Sorties" toggleGroup="$groupeTypeFiltre" onAction="#appliquerFiltres" />
+
+                <DatePicker fx:id="dateDebut" promptText="Du" onAction="#appliquerFiltres" />
+                <DatePicker fx:id="dateFin" promptText="Au" onAction="#appliquerFiltres" />
+
                 <Button fx:id="boutonNouveauMouvement" onAction="#ouvrirDialogAjout" mnemonicParsing="false" prefWidth="150.0" styleClass="btn-primaire" text="+ Nouveau Mouvement" />
             </children>
         </HBox>

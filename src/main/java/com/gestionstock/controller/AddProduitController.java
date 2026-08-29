@@ -83,6 +83,10 @@ public class AddProduitController {
             afficherAlerte("Prix, prix promo, stock et stock min. doivent être des nombres valides.");
             return;
         }
+        if (prixPromo >0&& prixPromo>=prix) {
+            afficherAlerte("le prix de du promo doit etre inferieur au prix normal");
+            return;
+        }
 
         Produit produit = new Produit(
                 champNom.getText().trim(),

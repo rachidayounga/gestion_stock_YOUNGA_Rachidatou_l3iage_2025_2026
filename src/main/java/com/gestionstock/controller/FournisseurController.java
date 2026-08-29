@@ -43,7 +43,7 @@ public class FournisseurController {
 
     // État : null = mode ajout, non-null = mode modification
     private Fournisseur fournisseurUpdate = null;
-
+    String telvalide = "^(77|78|75|76|70)\\d{7}$";
     @FXML
     public void initialize() {
         colonneNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -108,6 +108,14 @@ public class FournisseurController {
             alerte.setTitle("Champ requis");
             alerte.setHeaderText(null);
             alerte.setContentText("Le téléphone du fournisseur est obligatoire.");
+            alerte.showAndWait();
+            return;
+        }
+        if (!champTel.getText().trim().matches(telvalide)){
+            Alert alerte = new Alert(Alert.AlertType.WARNING);
+            alerte.setTitle("Champ invalide");
+            alerte.setHeaderText(null);
+            alerte.setContentText("le numero de telephone doit avoir 9 chiffre et commene par 77/78/../..");
             alerte.showAndWait();
             return;
         }
