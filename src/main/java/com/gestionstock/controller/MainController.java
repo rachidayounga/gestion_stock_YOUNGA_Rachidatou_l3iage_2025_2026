@@ -97,7 +97,7 @@ public class MainController {
     }
     @FXML
     private void gererComptes() {
-        System.out.println("");
+        chargerVue("/com/gestionstock/GestionComptes.fxml");
     }
 
 
