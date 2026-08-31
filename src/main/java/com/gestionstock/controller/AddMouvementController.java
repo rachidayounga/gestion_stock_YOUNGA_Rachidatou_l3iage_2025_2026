@@ -1,8 +1,7 @@
 package com.gestionstock.controller;
 
-import com.gestionstock.model.Produit;
-import com.gestionstock.model.Mouvement;
 import com.gestionstock.model.enums.TypeMouvement;
+import com.gestionstock.model.Produit;
 import com.gestionstock.service.MouvementService;
 import com.gestionstock.service.MouvementServiceImpl;
 import com.gestionstock.service.ProduitService;
@@ -14,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddMouvementController implements Initializable {

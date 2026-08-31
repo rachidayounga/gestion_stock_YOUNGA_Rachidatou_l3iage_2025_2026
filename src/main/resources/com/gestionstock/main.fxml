@@ -20,6 +20,7 @@
              <Button fx:id="btnMouvements" mnemonicParsing="false" onAction="#afficherMouvements" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Mouvements" />
              <Button fx:id="btnDeconnexion" mnemonicParsing="false" onAction="#seDeconnecter" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Deconnection" />
              <Button fx:id="btnGestionCompte" mnemonicParsing="false" onAction="#gererComptes" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Gestion_comptes" />
+             <Button fx:id="btnStatistiques" mnemonicParsing="false" onAction="#afficherStatistiques" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Statistiques" />
 
 
          </children>

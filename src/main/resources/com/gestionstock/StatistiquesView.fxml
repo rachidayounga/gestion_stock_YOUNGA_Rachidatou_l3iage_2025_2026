@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gestionstock.controller.StatistiquesController">
+    <children>
+        <!-- En-tête -->
+        <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="10.0">
+            <children>
+                <Label text="Statistiques" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                <Region HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+
+        <!-- Filtre période -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="Du" />
+                <DatePicker fx:id="dateDebut" />
+                <Label text="Au" />
+                <DatePicker fx:id="dateFin" />
+                <Button fx:id="boutonFiltrer" mnemonicParsing="false" onAction="#appliquerFiltrePeriode" text="Filtrer" />
+            </children>
+        </HBox>
+
+        <!-- Cartes -->
+        <HBox spacing="15.0" alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" prefWidth="280.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelValeurTotaleStock" text="0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                        <Label text="Valeur totale du stock" />
+                    </children>
+                </VBox>
+
+                <VBox alignment="CENTER" prefWidth="280.0" prefHeight="80.0" spacing="5.0" style="-fx-background-color: #ecf0f1; -fx-background-radius: 8;">
+                    <children>
+                        <Label fx:id="labelProduitLePlusMouvemente" text="-" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <Label text="Produit le plus mouvementé" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Graphique barres : entrées/sorties par mois -->
+        <Label text="Entrées / Sorties par mois" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <BarChart fx:id="barChartMouvements" prefHeight="280.0" prefWidth="600.0">
+            <xAxis>
+                <CategoryAxis fx:id="axeXMois" label="Mois" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="axeYQuantite" label="Nombre de mouvements" />
+            </yAxis>
+        </BarChart>
+
+        <!-- Graphique camembert : valeur du stock par catégorie -->
+        <Label text="Valeur du stock par catégorie" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <PieChart fx:id="pieChartCategories" prefHeight="280.0" prefWidth="600.0" />
+    </children>
+</VBox>

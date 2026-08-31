@@ -1,5 +1,4 @@
 package com.gestionstock.service;
-import com.gestionstock.model.Produit;
 import com.gestionstock.model.Utilisateur;
 
 import java.util.List;

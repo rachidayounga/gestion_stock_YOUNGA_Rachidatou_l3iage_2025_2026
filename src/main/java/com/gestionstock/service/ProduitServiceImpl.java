@@ -1,17 +1,13 @@
 package com.gestionstock.service;
 
+import com.gestionstock.model.Categorie;
 import com.gestionstock.model.Produit;
-import com.gestionstock.util.DatabaseConfig;
 import com.gestionstock.util.JPAUtil;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ProduitServiceImpl implements ProduitService {
@@ -154,6 +150,22 @@ public class ProduitServiceImpl implements ProduitService {
                     Long.class
             ).getSingleResult();
         }
+    }
+    @Override
+    public Map<Categorie, Double> calculerValeurStockParCategorie() {
+        List<Produit> produits = findAllProduits();
+
+        Map<Categorie, Double> resultat = new HashMap<>();
+
+        for (Produit p : produits) {
+            Categorie categorie = p.getCategorie();
+            double valeurProduit = p.getQuantiteStock() * p.getPrix();
+
+            double totalActuel = resultat.getOrDefault(categorie, 0.0);
+            resultat.put(categorie, totalActuel + valeurProduit);
+        }
+
+        return resultat;
     }
 }
 

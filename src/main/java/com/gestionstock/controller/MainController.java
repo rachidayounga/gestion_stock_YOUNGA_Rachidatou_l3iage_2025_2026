@@ -99,6 +99,9 @@ public class MainController {
     private void gererComptes() {
         chargerVue("/com/gestionstock/GestionComptes.fxml");
     }
-
+    @FXML
+    private void afficherStatistiques() {
+        chargerVue("/com/gestionstock/StatistiquesView.fxml");
+    }
 
 }

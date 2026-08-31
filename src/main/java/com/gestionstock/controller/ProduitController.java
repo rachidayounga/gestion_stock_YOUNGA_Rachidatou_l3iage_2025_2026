@@ -2,9 +2,9 @@ package com.gestionstock.controller;
 
 import com.gestionstock.model.Categorie;
 import com.gestionstock.model.Fournisseur;
+import com.gestionstock.model.Produit;
 import com.gestionstock.service.ProduitService;
 import com.gestionstock.service.ProduitServiceImpl;
-import com.gestionstock.model.Produit;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

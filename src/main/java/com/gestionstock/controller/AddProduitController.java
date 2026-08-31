@@ -1,8 +1,8 @@
 package com.gestionstock.controller;
 
 import com.gestionstock.model.Categorie;
-import com.gestionstock.model.Fournisseur;
 import com.gestionstock.model.Produit;
+import com.gestionstock.model.Fournisseur;
 import com.gestionstock.service.CategorieService;
 import com.gestionstock.service.CategorieServiceImpl;
 import com.gestionstock.service.FournisseurService;

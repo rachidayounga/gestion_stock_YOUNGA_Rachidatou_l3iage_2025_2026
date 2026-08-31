@@ -1,10 +1,8 @@
 package com.gestionstock.controller;
 
-import com.gestionstock.model.Categorie;
 import com.gestionstock.model.Produit;
 import com.gestionstock.service.*;
 import com.gestionstock.util.SessionUtilisateur;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
